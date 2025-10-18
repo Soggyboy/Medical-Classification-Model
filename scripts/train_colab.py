@@ -32,11 +32,11 @@ TEXT_COL = "dose_vbm_org"  # column in your CSV containing the raw dose text
 # --------------------------
 # Upload CSV
 # --------------------------
-print("📤 Upload your CSV (must include a column named 'dose_vbm_org')...")
+print("Upload your CSV (must include a column named 'dose_vbm_org')...")
 uploaded = files.upload()
 assert uploaded, "No file uploaded."
 csv_path = next(iter(uploaded.keys()))
-print(f"✅ Received: {csv_path}")
+print(f"Received: {csv_path}")
 
 # --------------------------
 # Load & prepare data
@@ -108,11 +108,11 @@ os.makedirs(OUTDIR, exist_ok=True)
 with open(os.path.join(OUTDIR, "tfidf_vec.pkl"), "wb") as f:
     pickle.dump(vec.vec, f)  # save underlying sklearn vectorizer
 torch.save(model.state_dict(), os.path.join(OUTDIR, "flat343.pt"))
-print(f"💾 Saved model + vectorizer to: {OUTDIR}")
+print(f"Saved model + vectorizer to: {OUTDIR}")
 
 # --------------------------
 # Quick evaluation on the held-out split
 # --------------------------
 out = evaluate(model, val_loader, device)
 
-print("✅ Done.")
+print("Done.")
