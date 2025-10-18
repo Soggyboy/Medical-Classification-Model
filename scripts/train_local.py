@@ -123,7 +123,7 @@ def main():
         # save underlying sklearn vectorizer for portability
         pickle.dump(vec.vec, f)
     torch.save(model.state_dict(), os.path.join(args.outdir, "flat343.pt"))
-    print(f"💾 Saved model + vectorizer to: {args.outdir}")
+    print(f"Saved model + vectorizer to: {args.outdir}")
 
     # 10) Quick evaluation on the held-out split
     out = evaluate(model, val_loader, device)
@@ -131,7 +131,7 @@ def main():
     out["metrics_df"].to_csv(os.path.join(args.outdir, "metrics.csv"), index=False)
     out["classification_df"].to_csv(os.path.join(args.outdir, "classification_report.csv"))
 
-    print("✅ Training complete.")
+    print("Training complete.")
 
 
 if __name__ == "__main__":
